@@ -1,0 +1,48 @@
+{
+	"name": "ykdoctor",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"create-react-app": "^2.1.1",
+		"prop-types": "^15.6.2",
+		"react": "^16.6.3",
+		"react-dom": "^16.6.3",
+		"react-scripts": "2.1.1"
+	},
+	"scripts": {
+		"start": "react-app-rewired start",
+		"build": "react-app-rewired build",
+		"test": "react-app-rewired test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	],
+	"devDependencies": {
+		"antd": "^3.11.2",
+		"axios": "^0.18.0",
+		"babel-plugin-import": "^1.11.0",
+		"history": "^4.7.2",
+		"http-proxy-middleware": "^0.19.1",
+		"immutable": "^4.0.0-rc.12",
+		"jquery": "^3.3.1",
+		"react-app-engine": "^0.1.27",
+		"react-app-rewired": "^1.6.2",
+		"react-redux": "^6.0.0",
+		"react-router-dom": "^4.3.1",
+		"redux": "^4.0.1",
+		"redux-immutable": "^4.0.0",
+		"redux-logger": "^3.0.6",
+		"redux-thunk": "^2.3.0",
+		"sass-loader": "^7.1.0",
+		"styled-components": "^4.1.2",
+		"ts-loader": "^5.3.1"
+    },
+    "proxy": "http://api-health.daanlab.com"
+}
