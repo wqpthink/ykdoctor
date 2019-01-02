@@ -149,7 +149,7 @@ export default {
     //字符串反转
     reverse: function(input) {
         if(this.isBlank(input)) {
-            input;
+            return  input;
         }
         return input.split("").reverse().join("");
     },
@@ -187,7 +187,7 @@ export default {
         let regex = (size == 0) ? "^" : "^(?!.*(?:{0}))";
         let subPattern = "";
         for(let i = 0; i < size; i++) {
-            excludeStrArr[i] = Bee.StringUtils.escapeMetacharacterOfStr(excludeStrArr[i]);
+            excludeStrArr[i] = this.StringUtils.escapeMetacharacterOfStr(excludeStrArr[i]);
             subPattern += excludeStrArr[i];
             if(i != size - 1) {
                 subPattern += "|";
@@ -307,7 +307,7 @@ export default {
         let regex = "^";
         let subPattern = "";
         for(var i = 0; i < size; i++) {
-            containStrArr[i] = Bee.StringUtils.escapeMetacharacterOfStr(containStrArr[i]);
+            containStrArr[i] = this.StringUtils.escapeMetacharacterOfStr(containStrArr[i]);
             subPattern += "(?=.*" + containStrArr[i] + ")";
         }
         regex += subPattern;

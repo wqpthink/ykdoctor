@@ -7,7 +7,8 @@
 		"prop-types": "^15.6.2",
 		"react": "^16.6.3",
 		"react-dom": "^16.6.3",
-		"react-scripts": "2.1.1"
+		"react-scripts": "2.1.1",
+		"redux-actions": "^2.6.4"
 	},
 	"scripts": {
 		"start": "react-app-rewired start",
@@ -25,6 +26,7 @@
 		"not op_mini all"
 	],
 	"devDependencies": {
+		"@babel/plugin-transform-async-to-generator": "^7.2.0",
 		"antd": "^3.11.2",
 		"axios": "^0.18.0",
 		"babel-plugin-import": "^1.11.0",
@@ -43,6 +45,6 @@
 		"sass-loader": "^7.1.0",
 		"styled-components": "^4.1.2",
 		"ts-loader": "^5.3.1"
-    },
-    "proxy": "http://api-health.daanlab.com"
+	},
+	"proxy": "http://api-health.daanlab.com"
 }

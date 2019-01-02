@@ -2,7 +2,7 @@ import {fromJS} from 'immutable';
 import {actionTypes} from './interface';
 
 const defaultState = fromJS({
-    loginState: false,
+    loginState: true,
     loginData: {}
 });
 
