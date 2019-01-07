@@ -46,5 +46,5 @@
 		"styled-components": "^4.1.2",
 		"ts-loader": "^5.3.1"
 	},
-	"proxy": "http://api-health.daanlab.com"
+	"proxy": "http://apidoctor-cg.yklis.com"
 }

@@ -5,6 +5,7 @@ import { actionCreators } from "./store/interface";
 import NormalInfo from './NormalInfo';
 import CkAbnormal from './CkAbnormal';
 import NoHandle from './NoHandle';
+import AgainInsureClick from './AgainInsureClick';
 
 
 const TabPane = Tabs.TabPane;
@@ -32,7 +33,7 @@ class PolicyHandle extends PureComponent {
             this.props.getInsureHandle(para); 
         } else if (key == '03') {           
             this.props.showPageLoading(true);
-            this.props.getInsureHandle();
+            this.props.getAgainInsureList();
         }
         this.props.changeQueryCriteria(para);
     }
@@ -53,7 +54,7 @@ class PolicyHandle extends PureComponent {
                 <TabPane tab="正常信息" key="1"><NormalInfo></NormalInfo></TabPane>
                 <TabPane tab="异常信息-需处理" key="01"><CkAbnormal></CkAbnormal></TabPane>
                 <TabPane tab="异常信息-无需处理" key="02"><NoHandle></NoHandle></TabPane>
-                <TabPane tab="异常信息-再次投保" key="03">Content of Tab Pane 3</TabPane>
+                <TabPane tab="异常信息-再次投保" key="03"><AgainInsureClick></AgainInsureClick></TabPane>
             </Tabs>
         );
     }
@@ -77,6 +78,9 @@ const mapDispatchToProps = dispatch => ({
     },
     initStore: () => {
         dispatch(actionCreators.initStore());
+    },
+    getAgainInsureList: (para, isSelectAll,type = "1") => {
+        dispatch(actionCreators.getAgainInsureList(para, isSelectAll,type));
     },
 });
 

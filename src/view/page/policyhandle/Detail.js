@@ -68,7 +68,7 @@ class PolicyDetail extends PureComponent {
                     <Row type="flex" justify="space-around">
                         <Col span={12}>
                             <span>投保项目：</span>
-                            {defaultString(detailInfo.examinationProjectName,"----")}
+                            {defaultString(detailInfo.itemTypeName,"----")}
                         </Col>
                         <Col span={12}>
                             <span>投保状态：</span>

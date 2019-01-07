@@ -53,6 +53,23 @@ class AdvancedSearchForm extends PureComponent {
         this.props.getInsureRecord(para, val);
         //console.log("result:", result);
     };
+    //导出Excel
+    exportExcel= () => {
+        let self = this;
+        if (this.props.isSelectAll) {
+            let _self = this,
+                para = {
+                    batchStatus: "0",
+                    pageSize: 2000,
+                    pageNum: 1
+                };
+            _self.props.getInsureRecord(para, false, true);            
+        } 
+        setTimeout(() => {
+            let selectedRecord = this.props.selectedRowKeys.join(',');
+            window.open(`http://manager-doctor.daanlab.com/api/doctor/InsuredBatchs/export?batchIds=${selectedRecord}`)
+        }, 1000);
+           };
     insuranceAll = async () => {
         if (this.props.isSelectAll) {
             let _self = this,

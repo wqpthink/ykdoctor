@@ -14,13 +14,13 @@ const defaultState = fromJS({
     // detail modal
     isShowDetail: false,
     detailInfo: {},
-    
+
     //batch modal
     isShowBatch: false,
     modalLoading: false,
     batchList: [],
     batchNo: "",
-    
+
     //NoDeal
     noDealList: [],
     isShowNoDeal: false,
@@ -28,6 +28,10 @@ const defaultState = fromJS({
     //Modify info
     isShowModify: false,
     modifyInfo: {},
+    //againInsure
+    againInsureList: [],
+    inlineIds: [],//线下投保
+    isConfirm:false
 
 });
 
@@ -35,7 +39,7 @@ const defaultState = fromJS({
 export default (state = defaultState, action) => {
     switch (action.type) {
     case actionTypes.INIT_STORE: // 初始化所有store数据
-        return defaultState; 
+        return defaultState;
     case actionTypes.CHANGE_LISTDATA: //改变列表查询结果
         return state.merge({
             insureHandleList: action.insureHandleList,
@@ -60,12 +64,12 @@ export default (state = defaultState, action) => {
     case actionTypes.SHOW_DETAIL: // 展示详情
         return state.merge({
             isShowDetail: action.isShowDetail
-        });  
+        });
     case actionTypes.CHAGE_DETAIL: // 改变详情
         return state.merge({
             detailInfo: action.detailInfo,
             pageLoading: action.pageLoading
-        }); 
+        });
     case actionTypes.CHANGE_SELECTALL: // 改变选择全部状态
         return state.merge({
             isSelectAll: action.isSelectAll
@@ -78,7 +82,7 @@ export default (state = defaultState, action) => {
     case actionTypes.SHOW_BATCHLIST: // 展示批次列表
         return state.merge({
             isShowBatch: action.isShowBatch,
-        });  
+        });
     case actionTypes.CHAGE_BATCHLIST: //改变批次列表
         return state.merge({
             batchList: action.batchList
@@ -107,6 +111,25 @@ export default (state = defaultState, action) => {
         return state.merge({
             modifyInfo: action.modifyInfo,
             pageLoading: action.pageLoading,
+        });
+        /**
+         * 异常信息-再次投保
+         */
+    case actionTypes.CHAGE_AGAININSURELIST: //改变再次投保列表查询结果
+        return state.merge({
+            againInsureList: action.againInsureList,
+            listTotal: action.listTotal,
+            pageLoading: action.pageLoading,
+            currentPage: action.currentPage,
+        });
+    case actionTypes.CHAGE_INLINEIDS: //改变再次投保列表查询结果 选择全部
+        return state.merge({
+            inlineIds: action.inlineIds,
+            pageLoading: action.pageLoading,
+        });
+    case actionTypes.SHOW_CONFIRM: //改变再次投保列表查询结果 选择全部
+        return state.merge({
+            isConfirm: action.isConfirm,
         });
     default:
         return state;

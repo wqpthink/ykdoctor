@@ -1,11 +1,11 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { Table, Modal, Button, Pagination, Row, Col, Form, Select, Spin, Input, DatePicker, } from "antd";
+import { Table, Modal, Button, Pagination, Row, Col, Form, Select, Spin, Input, message } from "antd";
 import { actionCreators } from "./store/interface";
 import StringUtil from "../../../util/StringUtil";
-import PolicyDetail from './Detail'
-import NoDeal from './NoDeal'
-import ModifyInfo from './ModifyInfo'
+import PolicyDetail from './Detail';
+import NoDeal from './NoDeal';
+import ModifyInfo from './ModifyInfo';
 import { PageWrapper, ModalWrapper, QureWrapper } from "./policyhandle-style";
 
 const isEmpty = StringUtil.isEmpty;
@@ -265,8 +265,24 @@ class Abnormal extends PureComponent {
         window.open(`http://manager-doctor.daanlab.com/api/doctor/insured/excel/execExcelExport?${temp}&orderBy=create_date desc`)
     };
     //信息导入
-    importInfo = () => {
-        this.props.form.resetFields();
+    importInfo = (e) => {
+        let tag = e.target,
+            self = this;
+        let _file = tag.files[0],
+            _extend = _file.name.split('.')[_file.name.split('.').length - 1];
+        if (_extend !== 'xlsx' && _extend !== 'xls') {
+            message.error(`不支持${_extend}格式的文件导入，请选择其他格式文件`);
+            return;
+        }
+        let formData = new FormData();
+        formData.append('file', _file);
+        this.props.importErorrExcel(formData);
+        this.props.changeQueryCriteria({
+            dataCheckType: "01",
+            pageNum: 1,
+            pageSize: 10
+        });
+        this.handleReset();
     };
     //页码查询
     onChange = pageNumber => {
@@ -490,9 +506,10 @@ class Abnormal extends PureComponent {
                                             backgroundColor: "#50c1e9",
                                             color: "#fff"
                                         }}
-                                        onClick={this.importInfo}>
+                                    >
                                         信息导入
-                            </Button>
+                                        <Input type="file" id="importExcel" className="upload-input" onChange={(e) => { this.importInfo(e) }} />
+                                    </Button>
                                     <Button
                                         style={{
                                             marginLeft: 8,
@@ -624,6 +641,9 @@ const mapDispatchToProps = dispatch => ({
     },
     showNoDeal: val => {
         dispatch(actionCreators.showNoDeal(val));
+    },
+    importErorrExcel: formatData => {
+        dispatch(actionCreators.importErorrExcel(formatData));
     },
 });
 

@@ -33,6 +33,15 @@ export const SHOW_NODEAL = 'policyrecord/SHOW_NODEAL';
 export const SHOW_MODIFY = 'policyrecord/SHOW_MODIFY';
 //改变选中的详情
 export const CHAGE_MODIFYINFO = 'policyrecord/CHAGE_MODIFYINFO';
+/**
+ * 异常信息-再次投保
+ */
+//改变再次投保列表查询结果
+export const CHAGE_AGAININSURELIST = 'policyrecord/CHAGE_AGAININSURELIST';
+//改变再次投保列表查询结果 选择全部
+export const CHAGE_INLINEIDS = 'policyrecord/CHAGE_INLINEIDS';
+////展示确认对话框
+export const SHOW_CONFIRM = 'policyrecord/SHOW_CONFIRM';
 
 
 

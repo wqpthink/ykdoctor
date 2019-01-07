@@ -47,6 +47,13 @@ export const QureWrapper = styled("div")`
     .ant-form-item-control-wrapper {
         flex: 1;
     }
+    .upload-input{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 5vw;
+        opacity: 0;
+    }
 `;
 
 export const ModalWrapper = styled("div")`
