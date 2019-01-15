@@ -85,7 +85,7 @@ class ModifyInfo extends PureComponent {
                                     {...formItemLayout}
                                     label={
                                         <span className="item-label">
-                                            检验条码
+                                            姓名
                                     </span>
                                     }>
                                     {getFieldDecorator(`examinerName`, {

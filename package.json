@@ -41,10 +41,11 @@
 		"redux": "^4.0.1",
 		"redux-immutable": "^4.0.0",
 		"redux-logger": "^3.0.6",
+		"redux-promise": "^0.6.0",
 		"redux-thunk": "^2.3.0",
 		"sass-loader": "^7.1.0",
 		"styled-components": "^4.1.2",
 		"ts-loader": "^5.3.1"
 	},
-	"proxy": "http://apidoctor-cg.yklis.com"
+	"proxy": "http://api-health.daanlab.com"
 }

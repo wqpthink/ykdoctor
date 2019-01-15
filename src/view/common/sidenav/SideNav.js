@@ -73,6 +73,7 @@ const mapDispatchToProps = dispatch => ({
         if(menuId === '192040424784547840') history.push('/policyrecord');
         if(menuId === '192038499984887808') history.push('/policyhandle');
         if(menuId === '188104493207670784') history.push('/identityimport');
+        if(menuId === '72898614171385856') history.push('/informationclass');
     }
 });
 

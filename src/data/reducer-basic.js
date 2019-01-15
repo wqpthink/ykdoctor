@@ -8,7 +8,7 @@ import { reducer as loginReducer } from '_page/login/store/interface';
 import { reducer as policyqueryReducer } from '_page/policyquery/store/interface';
 import { reducer as policyrecordReducer } from '_page/policyrecord/store/interface';
 import {reducer as policyhandleReducer} from '_page/policyhandle/store/interface';
-
+import {reducer as informationclassReducer} from '_page/informationclass/store/interface';
 
 export default combineReducers({
     header: headerReducer,
@@ -17,7 +17,8 @@ export default combineReducers({
     login: loginReducer,
     policyquery: policyqueryReducer,
     policyrecord: policyrecordReducer,
-    policyhandle:policyhandleReducer,
+    policyhandle: policyhandleReducer,
+    informationclass:informationclassReducer,
 });
 
 const results_import = []; //import集

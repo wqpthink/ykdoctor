@@ -9,7 +9,8 @@ import PolicyQuery from '_page/policyquery/PolicyQuery';
 import PolicyRecord from '_page/policyrecord/PolicyRecord';
 import PolicyHandle from '_page/policyhandle/PolicyHandle';
 import IdentityImport from '_page/identityimport/IdentityImport';
-
+import PolicyHandle1 from '_page/policyhandle/PolicyHandle';
+import InformationClass from '_page/informationclass/InformationClass';
 
 
 /**
@@ -51,6 +52,11 @@ const routeConf = [
         path: '/policyhandle',
         layout: AttachHeadAndSideLayout,
         component: PolicyHandle
+    },
+    {
+        path: '/informationclass',
+        layout: AttachHeadAndSideLayout,
+        component: InformationClass
     },
     {
         path: '/identityimport',
