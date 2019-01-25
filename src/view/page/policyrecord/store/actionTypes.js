@@ -25,4 +25,6 @@ export const SHOW_INSUREMODAL = 'policyrecord/SHOW_INSUREMODAL';
 export const SET_INSURE_ROWKEYS = 'policyrecord/SET_INSURE_ROWKEYS';
 //展示modal loading
 export const SHOW_MODALLOADING = 'policyrecord/SHOW_MODALLOADING';
+//promise 获取投保记录
+export const GET_INSURERECORD_BY_PROMISE = 'policyrecord/GET_INSURERECORD_BY_PROMISE';
 

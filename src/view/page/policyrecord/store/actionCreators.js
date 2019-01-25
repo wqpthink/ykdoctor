@@ -86,6 +86,84 @@ export const getInsureRecord = (
     };
 };
 
+const getInsureRecordHttp = (
+    _para = { orderBy: "batchGenTime desc", pageSize: "10" }
+) => {
+    let _param = "";
+    if (_para.batchNumber) {
+        _param += `batchNumber=${_para.batchNumber}&`;
+    }
+    if (_para.insuredOperator) {
+        _param += `insuredOperator=${_para.insuredOperator}&`;
+    }
+    if (_para.batchStatus) {
+        _param += `batchStatus=${_para.batchStatus}&`;
+    }
+    if (_para.startTime) {
+        _param += `startTime=${_para.startTime}&`;
+    }
+    if (_para.endTime) {
+        _param += `endTime=${_para.endTime}&`;
+    }
+    if (_para.pageNum) {
+        _param += `pageNum=${_para.pageNum}&`;
+    }
+    if (_para.orderBy) {
+        _param += `orderBy=${_para.orderBy}&`;
+    } else {
+        _param += `orderBy=batchGenTime desc&`;
+    }
+    if (_para.pageSize) {
+        _param += `pageSize=${_para.pageSize}`;
+    } else {
+        _param += `pageSize=10`;
+    }
+    return axios.get(`/v999/doctor/InsuredBatchs/queryInsuredOrderBatchList?${_param}`);
+    // .then(res => {
+    //     if (res.data.code == 0) {
+    //         res.data.data.list.map(item => {
+    //             item.key = item.id;
+    //         });
+    //         return res.data.data;
+    //     } else {
+    //         message.error(res.data.msg);
+    //     }
+    // })
+    // .catch(err => {
+    //     message.error(err.response.data.msg);
+    // })
+};
+
+
+//promise
+export const getInsureRecordByPromise = (
+    _para = { orderBy: "batchGenTime desc", pageSize: "10" }
+) => {
+    return dispatch => {
+        return dispatch({
+            type: actionTypes.GET_INSURERECORD_BY_PROMISE,
+            payload: getInsureRecordHttp(_para)
+        }).then(res => {
+            let keys = [];
+            if (res.payload.data.code == 0) {
+                res.payload.data.data.list.map(item => {
+                    item.key = item.id;
+                    keys.push(item.id);
+                });
+                dispatch(setInsureRowKeys(keys));
+                dispatch(
+                    getListChangeAction(res.payload.data.data, false)
+                );
+                dispatch(
+                    showInsureModal(true)
+                );
+            } else {
+                message.error(res.payload.data.msg);
+            }
+        })
+    }
+};
+
 //改变列表查询结果
 export const getListChangeAction = (result, isSelectAll) => {
     if (isSelectAll) {
@@ -326,7 +404,7 @@ export const getModalData = para => {
         axios
             .get(
                 `/v999/doctor/insuredBatchresults/getInsuredOrderBatchResultDetail?batchId=${
-                    para.batchId
+                para.batchId
                 }&batchStatus=${para.batchStatus}&barcode=${para.barcode}`
             )
             .then(res => {
@@ -350,7 +428,7 @@ export const setInsureRowKeys = list => {
     return {
         type: actionTypes.SET_INSURE_ROWKEYS,
         insureRowKeys: list,
-        pageLoading:false,
+        pageLoading: false
     };
 };
 //展示modal loading

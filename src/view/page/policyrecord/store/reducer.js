@@ -19,6 +19,7 @@ const defaultState = fromJS({
     modalTitle: '',
     isShowInsureModal: false,
     modalLoading: false,
+    promiseList:[]
 
 });
 
@@ -85,6 +86,17 @@ export default (state = defaultState, action) => {
         return state.merge({
             modalLoading: action.modalLoading
         });
+    case actionTypes.GET_INSURERECORD_BY_PROMISE: // promise 获取投保记录
+        if (action.status === 'success') {
+            return state.merge({
+                promiseList: action.payload.data.data.list
+            });
+        } else {
+            return state.merge({
+                promiseList: action.payload.data.data.list
+            });
+        }
+            
     default:
         return state;
     }

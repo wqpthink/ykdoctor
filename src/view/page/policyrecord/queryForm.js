@@ -70,7 +70,7 @@ class AdvancedSearchForm extends PureComponent {
             window.open(`http://manager-doctor.daanlab.com/api/doctor/InsuredBatchs/export?batchIds=${selectedRecord}`)
         }, 1000);
            };
-    insuranceAll = async () => {
+    insuranceAll =  () => {
         if (this.props.isSelectAll) {
             let _self = this,
                 para = {
@@ -81,11 +81,13 @@ class AdvancedSearchForm extends PureComponent {
             // self.props.getInsureRecord(para).then(() => {
             //     console.log("selectedRowKeys:",this.props.selectedRowKeys);
             // });
-            await _self.props.getInsureRecord(para, false, true);
+            //_self.props.getInsureRecord(para, false, true);
+             _self.props.getInsureRecordByPromise(para);
             //_self.props.showPageLoading(true);
-            setTimeout(() => {
-                _self.props.showInsureModal(true);
-            }, 100);
+            // setTimeout(() => {
+            //     _self.props.showInsureModal(true);
+            //     //console.log("promiseList:",_self.props.promiseList);
+            // }, 100);
             //_self.props.showInsureModal(true);
 
         } else {
@@ -289,7 +291,8 @@ const mapStateToProps = state => {
         isSelectAll: stateObj.policyrecord.isSelectAll,
         selectedRowKeys: stateObj.policyrecord.selectedRowKeys,
         selectedRows: stateObj.policyrecord.selectedRows,
-        currentPage: stateObj.policyrecord.currentPage
+        currentPage: stateObj.policyrecord.currentPage,
+        promiseList:stateObj.policyrecord.promiseList,
     };
 };
 
@@ -299,6 +302,9 @@ const mapDispatchToProps = dispatch => ({
     },
     getInsureRecord: (params, isSelectAll = false, isInsure = false) => {
         dispatch(actionCreators.getInsureRecord(params, isSelectAll, isInsure));
+    },
+    getInsureRecordByPromise: (params) => {
+        dispatch(actionCreators.getInsureRecordByPromise(params));
     },
     showPageLoading: val => {
         dispatch(actionCreators.showPageLoading(val));
